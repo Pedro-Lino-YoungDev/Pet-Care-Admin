@@ -1,0 +1,277 @@
+.ContainerMinimal {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    margin-top: 90px;
+    background-color: #CED4DA;
+    text-align: center;
+    border-radius: 10px;
+    padding-bottom: 40px;
+    width: 86%;
+    margin-left: 7%;
+    margin-right: 7%;
+    align-items: center;
+  }
+.ContainerTranslucido{
+  background: none;
+  width:calc(100% - 30px);
+}
+.ContainerTranslucido h1{
+  margin: 0px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0px;
+  text-align: left;
+  margin-bottom: 0px;
+  color: #353535;
+}
+.ContainerTranslucido h3{
+  margin: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding: 0px;
+  text-align: left;
+  color: #353535;
+}
+.ContainerTranslucido p{
+  margin: 20px;
+  margin-top: 0px;
+  padding: 0px;
+  text-align: left;
+  color: #353535;
+}
+.ContainerVerde{
+  width:calc(100% - 30px);
+  border-radius: 10px;
+  background-color: #353535;
+}
+.ContainerVerde h1{
+  margin: 0px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0px;
+  text-align: left;
+  margin-bottom: 0px;
+  color: rgb(240, 240, 240);
+}
+.ContainerVerde h3{
+  margin: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding: 0px;
+  text-align: left;
+  color: #e2e7eb;
+}
+.ContainerVerde p{
+  margin: 20px;
+  margin-top: 0px;
+  padding: 0px;
+  text-align: left;
+  color: white;
+}
+.Bold {
+  font-weight: bold;
+}
+.Italic {
+  font-style: italic;
+}
+
+
+  @media(max-height: 520px) and (min-height: 501px){
+    .ContainerMinimal {
+  
+        min-height: 280px;
+      }
+  }
+  @media(max-height: 540px) and (min-height: 521px){
+    .ContainerMinimal {
+  
+        min-height: 300px;
+      }
+  }
+  @media(max-height: 560px) and (min-height: 541px){
+    .ContainerMinimal {
+  
+        min-height: 320px;
+      }
+  }
+  @media(max-height: 580px) and (min-height: 561px){
+    .ContainerMinimal {
+  
+        min-height: 340px;
+      }
+  }
+  @media(max-height: 600px) and (min-height: 581px){
+    .ContainerMinimal {
+  
+        min-height: 360px;
+      }
+  }
+  @media(max-height: 620px) and (min-height: 601px){
+    .ContainerMinimal {
+  
+        min-height: 380px;
+      }
+  }
+  @media(max-height: 640px) and (min-height: 621px){
+    .ContainerMinimal {
+  
+        min-height: 400px;
+      }
+  }
+  @media(max-height: 660px) and (min-height: 641px){
+    .ContainerMinimal {
+  
+        min-height: 420px;
+      }
+  }
+  @media(max-height: 680px) and (min-height: 661px){
+    .ContainerMinimal {
+  
+        min-height: 440px;
+      }
+  }
+  @media(max-height: 700px) and (min-height: 681px){
+    .ContainerMinimal {
+  
+        min-height: 460px;
+      }
+  }
+  @media(max-height: 720px) and (min-height: 701px){
+    .ContainerMinimal {
+  
+        min-height: 480px;
+      }
+  }
+  @media(max-height: 740px) and (min-height: 721px){
+    .ContainerMinimal {
+  
+        min-height: 500px;
+      }
+  }
+  @media(max-height: 760px) and (min-height: 741px){
+    .ContainerMinimal {
+  
+        min-height: 520px;
+      }
+  }
+  @media(max-height: 780px) and (min-height: 761px){
+    .ContainerMinimal {
+  
+        min-height: 540px;
+      }
+  }
+  @media(max-height: 800px) and (min-height: 781px){
+    .ContainerMinimal {
+  
+        min-height: 560px;
+      }
+  }
+  @media(max-height: 820px) and (min-height: 801px){
+    .ContainerMinimal {
+  
+        min-height: 580px;
+    }
+}
+@media(max-height: 840px) and (min-height: 821px){
+    .ContainerMinimal {
+  
+        min-height: 600px;
+      }
+  }
+  @media(max-height: 860px) and (min-height: 841px){
+    .ContainerMinimal {
+  
+        min-height: 620px;
+      }
+  }
+  @media(max-height: 880px) and (min-height: 861px){
+    .ContainerMinimal {
+  
+        min-height: 640px;
+      }
+  }
+  @media(max-height: 900px) and (min-height: 881px){
+    .ContainerMinimal {
+  
+        min-height: 660px;
+      }
+  }
+  @media(max-height: 920px) and (min-height: 901px){
+    .ContainerMinimal {
+  
+        min-height: 680px;
+      }
+  }
+  @media(max-height: 940px) and (min-height: 921px){
+    .ContainerMinimal {
+  
+        min-height: 700px;
+      }
+  }
+  @media(max-height: 960px) and (min-height: 941px){
+    .ContainerMinimal {
+  
+        min-height: 720px;
+      }
+  }
+  @media(max-height: 980px) and (min-height: 961px){
+    .ContainerMinimal {
+  
+        min-height: 740px;
+      }
+  }
+  @media(max-height: 1000px) and (min-height: 981px){
+    .ContainerMinimal {
+  
+        min-height: 760px;
+      }
+  }
+  @media(max-height: 1020px) and (min-height: 1001px){
+    .ContainerMinimal {
+  
+        min-height: 780px;
+      }
+  }
+  @media(max-height: 1040px) and (min-height: 1021px){
+    .ContainerMinimal {
+  
+        min-height: 800px;
+      }
+  }
+  @media(max-height: 1060px) and (min-height: 1041px){
+    .ContainerMinimal {
+  
+        min-height: 820px;
+      }
+  }
+  @media(max-height: 1080px) and (min-height: 1061px){
+    .ContainerMinimal {
+  
+        min-height: 840px;
+      }
+  }
+  @media(max-height: 1100px) and (min-height: 1081px){
+    .ContainerMinimal {
+  
+        min-height: 860px;
+      }
+  }
+  @media(max-height: 1120px) and (min-height: 1101px){
+    .ContainerMinimal {
+  
+        min-height: 880px;
+      }
+  }
+  @media(max-height: 1140px) and (min-height: 1121px){
+    .ContainerMinimal {
+  
+        min-height: 900px;
+    }
+}

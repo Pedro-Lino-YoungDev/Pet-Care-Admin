@@ -1,0 +1,51 @@
+.Nav{
+    background-color: rgb(216, 48, 48);
+    top: 0%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+    z-index: 2;
+}
+.NavLogo{
+    margin-left: 10px;
+    justify-self: left;
+    margin-right: auto;
+}
+.NavItem{
+    justify-self: right;
+    margin-right: 3.2%;
+}
+.NavPerfil{
+    margin-right: 10px;
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+}
+
+.NavPerfil img{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: grab;
+}
+.NavIMG{
+    padding-top: 0px;
+    padding-left: 25px;
+    padding-bottom: 30px;
+    padding-right: 25px;    
+}
+.Ocult{
+    display: none;
+}
+.PetCareLogo{
+    max-width: 60px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
