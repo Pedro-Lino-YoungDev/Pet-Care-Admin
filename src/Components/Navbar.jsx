@@ -32,9 +32,6 @@ function Navbar(){
     return(
         <nav className= {Style.Nav}>
             <div className={Style.NavLogo}>
-                {
-                    console.log((validador.pathname))
-                }
                 <Link to="/home">
                     <img className={Style.PetCareLogo} src="/Imagens/logo-v1(1).png" alt="Logo Pet Care" />
                 </Link>

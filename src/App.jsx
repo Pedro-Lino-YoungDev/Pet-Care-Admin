@@ -14,6 +14,10 @@ import Modificarcadastrodousuario from './Routes/ModificarCadastroDoUsuario';
 import Sobre from "./Routes/Sobre"
 import Contato from "./Routes/Contato"
 import Politicas from "./Routes/Politicas"
+import TodosUsuarios from './Routes/TodosUsuarios';
+import TodasDenuncias from "./Routes/TodasDenuncias"
+import TodosOsAdmins from "./Routes/TodosOsAdmins"
+import AtualizarDenuncia from './Routes/AtualizarDenuncia';
 
 function App() {
   
@@ -23,16 +27,21 @@ function App() {
     <Routes >
         <Route path="/home" element={<Home />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/listagem" element={<Listagem />} />
+        <Route path="/minhas_denuncias" element={<Listagem />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/modificardenuncia" element={<ModificarCadastro />} />
+        <Route path="/modifica_rdenuncia" element={<ModificarCadastro />} />
         <Route path='/denuncia' element={<Denuncia />} />
         <Route path="/usuario" element={<User/>}/>
-        <Route path="/modificarcadastrodousuario" element={< Modificarcadastrodousuario />}/>
+        <Route path="/modificar_cadastro_do_usuario" element={< Modificarcadastrodousuario />}/>
         <Route path="/sobre" element={<Sobre/>}/>
         <Route path="/politicas_da_empresa" element={<Politicas/>}/>
         <Route path="/Contato" element={<Contato/>}/>
+        <Route path="/todos_usuarios" element={<TodosUsuarios/>}/>
+        <Route path="/todos_admins" element={<TodosOsAdmins/>}/>
+        <Route path="/todas_denuncias" element={<TodasDenuncias/>}/>
+        <Route path="/atualizar_denuncia" element={<AtualizarDenuncia/>}/>
+
         <Route exact path="/" element={ <Navigate to="/home"/> }/>
     </Routes>
     <Rodapé />

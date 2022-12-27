@@ -1,12 +1,13 @@
 import Style from '../Style/Home.module.css'
 import Boton from '../Components/Botao'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
+import { useState } from 'react';
 
 
 
 function Home(){
-    var teste = false;
+    const [navegar, setNavegar] = useState();
     const verificar_token = () =>{
         if (localStorage.getItem("token") != null) {
             const DataAtual = new Date();
@@ -29,40 +30,57 @@ function Home(){
     return(
         <div className={Style.ContainerMinimal}>
             <div className={Style.Duplas}>
-                <div className={Style.Opção}>
+                <div className={Style.Opção} onClick={() => {setNavegar("Todos os admins")}}>
                         <p>
-                        <Link to={"/sobre"}>
                         <img src="/Imagens/Admins.svg" alt="" />
-                        
-                        
-                        </Link>Todos os admins
+                        Todos os admins
                         </p>
                 </div>
-                <div className={Style.Opção}>
+                <div className={Style.Opção} onClick={() => {setNavegar("Todos usuários")}}>
                     <p>
-                        <Link to={"/sobre"}>
                         <img src="/Imagens/all.svg" alt="" />
-                        </Link>Todos usuários
+                        Todos usuários
                     </p>
                 </div>
             </div>
             <div className={Style.Duplas2}>
-                <div className={Style.Opção}>
+                <div className={Style.Opção}  onClick={() => {setNavegar("Todas Denúncias")}}>
                     <p>
-                        <Link to={"/sobre"}>
                         <img src="/Imagens/denúncias.png" alt="" />
-                        </Link>Todas denúncias
+                        Todas denúncias
                     </p>
                 </div>
-                <div className={Style.Opção}>
+                <div className={Style.Opção} onClick={() => {setNavegar("Minhas Denúncias")}}>
                     <p>
-                        <Link to={"/sobre"}>
                         <img src="/Imagens/MinhasDenuncias.png" alt="" />
-                        </Link>Minhas Denúncias
+                        Minhas Denúncias
                     </p>
                 </div>
             </div>
-
+            { navegar == "Todos os admins" &&(
+                <>
+                <Navigate to={"/todos_admins"}/>
+                </>
+            )
+            }
+            { navegar == "Todos usuários" &&(
+                <>
+                <Navigate to={"/todos_usuarios"}/>
+                </>
+            )
+            }
+            { navegar == "Todas Denúncias" &&(
+                <>
+                <Navigate to={"/todas_denuncias"}/>
+                </>
+            )
+            }
+            { navegar == "Minhas Denúncias" &&(
+                <>
+                <Navigate to={"/minhas_denuncias"}/>
+                </>
+            )
+            }
         </div>
     ) 
 }
