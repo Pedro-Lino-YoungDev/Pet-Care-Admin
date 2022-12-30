@@ -34,7 +34,7 @@ function Login(){
         }
     
         const post = () => {
-            axios.post("https://backend-petcare.herokuapp.com/admin/login",user)
+            axios.post("https://backend-petcare.herokuapp.com/loginadm",user)
             .then((res) => setRespost(res.data))
             .catch((res) => setErro(res.response.data))
         }

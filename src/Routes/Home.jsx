@@ -77,7 +77,7 @@ function Home(){
             }
             { navegar == "Minhas Denúncias" &&(
                 <>
-                <Navigate to={"/minhas_denuncias"}/>
+                    <Navigate to={""}/>
                 </>
             )
             }

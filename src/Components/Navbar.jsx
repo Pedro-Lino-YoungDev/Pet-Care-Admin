@@ -2,6 +2,7 @@ import Style from '../Style/Navbar.module.css'
 import Links from './Link'
 import {Link, useLocation} from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
+import { useState } from 'react';
 
 function Navbar(){
 
@@ -29,8 +30,16 @@ function Navbar(){
              return "sem token válido"
          }
      }
+     const color = () =>{
+        if (validador.pathname == "/todos_usuarios" || validador.pathname == "/modificar_usuario") {
+            return "rgb(53, 53, 156)"
+        }
+        else if(validador.pathname == "/denuncias_usuario" || validador.pathname == "/denuncia" || validador.pathname == "/todas_denuncias" || validador.pathname == "/atualizar_denuncia"){
+            return "darkgreen"
+        }
+    }
     return(
-        <nav className= {Style.Nav}>
+        <nav className= {Style.Nav}  style={{backgroundColor: color()}}>
             <div className={Style.NavLogo}>
                 <Link to="/home">
                     <img className={Style.PetCareLogo} src="/Imagens/logo-v1(1).png" alt="Logo Pet Care" />
@@ -47,14 +56,13 @@ function Navbar(){
                 {verificar(validador.pathname) == "sem token válido" &&(
                     <Links tipo="navegação" nome = "Registrar-se" url = "/registro"/>  
                 )
-                }
-                
+                }   
             </div>
             <div className={Style.NavItem}>
 
 
             {verificar(validador.pathname) == "com token válido" &&(
-                <Links tipo="navegação" nome = "Ver denúncias" url = "/listagem"/>
+                <Links tipo="navegação" nome = "Ver denúncias" url = "/minhas_denuncias"/>
                 )
             }
 

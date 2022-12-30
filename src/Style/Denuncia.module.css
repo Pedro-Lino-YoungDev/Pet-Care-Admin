@@ -1,3 +1,82 @@
+.popup{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 300px;
+  width: 300px;
+  top: calc(50% - 152px);
+  left: calc(50% - 152px);
+  background-image: linear-gradient(#CED4DA,#929da7);
+  background-color: #CED4DA;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: solid white 2px;
+}
+.popup label {
+  display: flex;
+  margin-top: auto;
+  text-align: left;
+}
+.popup input{
+  border: 1px;
+}
+.erro{
+  text-align: center;
+  color:red;
+}
+.popup input+a{
+  color: #CED4DA;
+  background-color: rgb(196, 29, 29) ;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  border-color:  #CED4DA;
+  border-style: solid;
+  border-width: 2px;
+  align-self: center;
+  margin-top: auto;
+  cursor: pointer;
+}
+.popup a+a{
+  color: #CED4DA;
+  background-color: #353535;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  border-color:  #CED4DA;
+  border-style: solid;
+  border-width: 2px;
+  align-self: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  cursor: pointer;
+}
+:hover.popup a{
+  color: #ffff;
+  border-color: #ffff;
+}
+.senha{
+  width: 210px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 25px;
+  border-radius: 10px;
+}
+.codigo{
+  width: 150px;
+  height: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+}
+
 .ContainerMinimal {
     display: flex;
     flex-direction: column;
@@ -32,6 +111,30 @@
     margin-left:5%;
     margin-right: 5%;
   }
+  .paragrafo{
+    width: 0px;
+    width: auto;
+  }
+  .Btn{
+    color: #CED4DA;
+    background-color: rgb(196, 29, 29);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    border-color:  #CED4DA;
+    border-style: solid;
+    border-width: 2px;
+    align-self: center;
+    width: 66.95px;
+    margin-top: 20px;
+}
+:hover.Btn{
+    color: #ffff;
+    border-color: #ffff;
+}
 
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {

@@ -42,9 +42,8 @@
     font-size:x-large;
     text-align: center;
   }
-   img{
+   .Opção img{
     width: 80%;
-    height: 90%;
   }
   @media(max-width: 251px){
     .Duplas{
@@ -57,6 +56,12 @@
       height: 120px;
       width: 120px;
       margin-bottom: 30px;
+    }
+    .Opção img{
+      height: 80px;
+      width: 110px;
+      margin-left: 30px;
+      margin-right: 30px;
     }
     .Opção p{
       font-size:smaller;
@@ -72,7 +77,12 @@
     .Opção{
       height: 150px;
       width: 150px;
-    }    
+    }
+    .Opção img{
+      width: 70%;
+      margin-left: 8px;
+      margin-right: 8px;
+    } 
     .Opção p{
       font-size: medium;
     }
@@ -93,6 +103,12 @@
       height: 120px;
       width: 120px;
     }
+    .Opção img{
+      height: 80px;
+      width: 110px;
+      margin-left: 30px;
+      margin-right: 30px;
+    }
     .Opção p{
       font-size:smaller;
     }
@@ -101,6 +117,11 @@
     .Opção{
       height: 150px;
       width: 150px;
+    }
+    .Opção img{
+      width: 70%;
+      margin-left: 8px;
+      margin-right: 8px;
     }
     .Opção p{
       font-size: medium;

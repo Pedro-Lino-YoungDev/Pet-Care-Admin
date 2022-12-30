@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import Style from '../Style/Listagem.module.css';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation} from 'react-router-dom';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import Botao from '../Components/Botao';
-import { useTimer } from 'react-timer-hook';
-
-
 
 
 function Listagem(){
 
-    if (localStorage.getItem("token") != null) {   
+    if (localStorage.getItem("token") != null) {
+
+        const location = useLocation();
+        const { from } = location.state;
 
         const DataAtual = new Date();
         const HorarioTokenFormatado = parseInt(DataAtual.valueOf()/1000);
@@ -31,7 +31,7 @@ function Listagem(){
             }
         
             useEffect(() => {
-                axios.post("https://backend-petcare.herokuapp.com/admin/denuncias",token)
+                axios.post("https://backend-petcare.herokuapp.com/denuncias/"+from.id,token)
                 .then((res) => setDenuncias(res.data))
                 .catch((res) => setErro(res.response.data.message))
                 .finally(() => setAnimacao(false))
@@ -130,15 +130,13 @@ function Listagem(){
                     <div className={Style.ContainerPadrao}>
                         <div className={Style.DivRedirecionar}>
                             <h2>
-                                Você ainda não cadatrou nenhuma denúncia! 
+                                Sem denúncias 
                             </h2>
+                            <img src="/Imagens/NotFound.png" alt="" />
                             <br />
                             <p className={Style.Tamanho}>
-                                Clique no boão a seguir para cadastrar sua primeira denúncia.
+                                Esse usuário ainda não cadastrou nenhuma denúncia.
                             </p>
-                        </div>
-                        <div>
-                            <Botao tipo="redirecionar" nome="Cadastrar denúncia" rota="/cadastro"></Botao>
                         </div>
                         {
                             console.clear()

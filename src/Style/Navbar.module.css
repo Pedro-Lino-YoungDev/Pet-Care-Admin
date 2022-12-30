@@ -23,10 +23,20 @@
     margin-right: 3.2%;
 }
 .NavPerfil{
+    display: flex;
     margin-right: 10px;
     border-radius: 50%;
     height: 48px;
     width: 48px;
+    padding: 2px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}
+.NavPerfil a{
+    display: flex;
+    margin: 0px;
+    padding: 0px;
 }
 
 .NavPerfil img{
@@ -34,12 +44,6 @@
     height: 48px;
     border-radius: 50%;
     cursor: grab;
-}
-.NavIMG{
-    padding-top: 0px;
-    padding-left: 25px;
-    padding-bottom: 30px;
-    padding-right: 25px;    
 }
 .Ocult{
     display: none;

@@ -2,7 +2,8 @@ import Style from '../Style/Denuncia.module.css'
 import { Navigate, useLocation } from 'react-router-dom';
 import jwtDecode from 'jwt-decode'
 import Botao from '../Components/Botao'
-
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 
 function Denuncia(){
@@ -28,6 +29,12 @@ function Denuncia(){
 
             const location = useLocation();
             const { from } = location.state;
+
+            const [popup, setPopup] = useState(false);
+            const [erro, setErro] = useState();
+            const [senha, setSenha] = useState("");
+            const [chave, setChave] = useState("");
+            const [resposta, setResposta] = useState();
 
             const ano_bissexto = (year) =>{
                 if(year % 400 == 0){
@@ -119,158 +126,19 @@ function Denuncia(){
             const HorarioSeparada = HorarioDenuncia[0].split(":");
             const HoraDenuncia = parseInt(HorarioSeparada[0]);
             const MinutosDenuncia = parseInt(HorarioSeparada[1]);
+            
 
-            //validando a data da denúncia;
-            if(AnoAtual == AnoDenuncia+ 1){
-                if(MesDenuncia == 12 && MesAtual == 1){
-                    if(DiaAtual == 1 && DiaDenuncia == 31){
-                        if (HoraAtual < HoraDenuncia ) {
-                            validador = true;
-                        }
-                        else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
-                            validador = true;
-                        }
-                        else{
-                            validador = false;
-                        }
+            const deletar = () =>{
+                axios.delete("https://backend-petcare.herokuapp.com/denuncia/"+from.id,{
+                    "data":{
+                        "adminKey": chave,
+                        "password": senha,
+                        "token": localStorage.getItem("token")
                     }
-                    else{
-                        validador = false;
-                    }
-                }
-                else{
-                    validador = false
-                }
-            }
-            else if (AnoAtual > AnoDenuncia+1){
-                validador = false;
-            }
-            else{
-                if(MesAtual == MesDenuncia+1){
-                    if (ano_bissexto(AnoDenuncia) == true){
-                        //meses com 31 dias == 1, 3, 5, 7, 8, 10, 12.
-                        if(MesDenuncia == 1 || MesDenuncia == 3 || MesDenuncia == 5 || MesDenuncia == 7 || MesDenuncia == 8 || MesDenuncia == 10){
-                            if (DiaAtual == 1 && DiaDenuncia == 31) {
-                                if (HoraAtual < HoraDenuncia ) {
-                                    validador = true;
-                                }
-                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
-                                    validador = true;
-                                }
-                                else{
-                                    validador = false;
-                                }
-                            }
-                            else{
-                                validador = false;
-                            }
-                        }
-                        else if(MesDenuncia == 2){
-                            if (DiaAtual == 1 && DiaDenuncia == 29) {
-                                if (HoraAtual < HoraDenuncia) {
-                                    validador = true;
-                                }
-                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
-                                    validador = true;
-                                }
-                                else{
-                                    validador = false;
-                                }
-                            }
-                            else{
-                                validador = false;
-                            }
-                        }
-                        else{
-                            if (DiaAtual == 1 && DiaDenuncia == 30) {
-                                if (HoraAtual < HoraDenuncia ) {
-                                    validador = true;
-                                }
-                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
-                                    validador = true;
-                                }
-                                else{
-                                    validador = false;
-                                }
-                            }
-                            else{
-                                validador = false;
-                            }
-                        }
-                    }
-                    else{
-                        if(MesDenuncia == 1 || MesDenuncia == 3 || MesDenuncia == 5 || MesDenuncia == 7 || MesDenuncia == 8 || MesDenuncia == 10){
-                            if (DiaAtual == 1 && DiaDenuncia == 31) {
-                                if (HoraAtual < HoraDenuncia ) {
-                                    validador = true;
-                                }
-                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
-                                    validador = true;
-                                }
-                                else{
-                                    validador = false;
-                                }
-                            }
-                            else{
-                                validador = false;
-                            }
-                        }
-                        else if(MesDenuncia == 2){
-                            if (DiaAtual == 1 && DiaDenuncia == 28) {
-                                if (HoraAtual < HoraDenuncia) {
-                                    validador = true;
-                                }
-                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
-                                    validador = true;
-                                }
-                                else{
-                                    validador = false;
-                                }
-                            }
-                            else{
-                                validador = false;
-                            }
-                        }
-                        else{
-                            if (DiaAtual == 1 && DiaDenuncia == 30) {
-                                if (HoraAtual < HoraDenuncia ) {
-                                    validador = true;
-                                }
-                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
-                                    validador = true;
-                                }
-                                else{
-                                    validador = false;
-                                }
-                            }
-                            else{
-                                validador = false;
-                            }
-                        }
-                    }
-                }
-                else if(MesAtual > MesDenuncia+1){
-                    validador = false;
-                }
-                else{
-                    if (DiaAtual == DiaDenuncia+1){
-                        if (HoraAtual < HoraDenuncia) {
-                            validador = true;
-                        }
-                        else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
-                            validador = true;
-                        }
-                        else{
-                            validador = false;
-                        }
-                    }
-                    else if(DiaAtual>DiaDenuncia+1){
-                        validador = false
-                    }
-                    else{
-                        validador = true;
-                    }
-                }
+                })
+                .then((res) => setResposta(res.data.message))
+                .catch((res) => setErro(res.response.data.message))
+                .then(() => {console.clear()})
             }
             return(
                 <div className={Style.ContainerMinimal}>
@@ -294,43 +162,44 @@ function Denuncia(){
                             <h4>
                                 Tipo do animal:
                             </h4>
-                            <p>
+                            <p className={Style.paragrafo}>
                                 {from.tipo}
                             </p>
                         </div>
-                
                         <div>
                             <h4>
                                 Cor do animal:
                             </h4>
-                            <p>
+                            <p className={Style.paragrafo}>
                                 {from.cor}
                             </p>
                         </div>
-                
                         <div>
                             <h4> 
                                 Rua:
                             </h4>
-                            <p>
+                            <p className={Style.paragrafo}>
                                 {from.rua}
                             </p>
                         </div>
+                        {
+                            console.log(erro)
+                        }
                 
                         <div>
                             <h4>
                                 Bairro:
                             </h4>
-                            <p>
+                            <p className={Style.paragrafo}>
                                 {from.bairro}
                             </p>
                         </div>
                 
                         <div>
-                            <h4>
+                            <h4 >
                                 Ponto de Referência:
                             </h4>
-                            <p>
+                            <p className={Style.paragrafo}>
                                 {from["pontoDeReferencia"]}
                             </p>
                         </div>
@@ -338,33 +207,66 @@ function Denuncia(){
                             <h4>
                                 Data de Cadastro:
                             </h4>
-                            <p>
+                            <p className={Style.paragrafo}>
                             {formatar_data(from["created_at"])} as {formatar_horario(from["created_at"])}
                             </p>
                         </div>
+
                         <div>
                             <h4>
                                 Ultima Atualização:
                             </h4>
-                            <p>
-                            {formatar_data(from["updated_at"])} as {formatar_horario(from["updated_at"])}
+                            <p className={Style.paragrafo}>
+                                {formatar_data(from["updated_at"])} as {formatar_horario(from["updated_at"])}
                             </p>
                         </div>
+
                         <div>
-                             <h4>
+                            <h4>
                                 Descrição
-                             </h4>
-                            <p>{from.descricao}</p>
+                            </h4>
+                            <p className={Style.paragrafo}>
+                                {from.descricao}
+                            </p>
                         </div>
-                        
-                        
+
                         <div className={Style.ContainerBtn}> 
-                            {validador == true &&(
                                 <Botao tipo="redirecionar" nome="Modificar" estado={{from:from}} rota="/modificardenuncia"></Botao>
-                            )
-                            }
                         </div>
-                        
+                        <div className={Style.ContainerBtn}> 
+                            <a className={Style.Btn} onClick={() => {setPopup(true)}}> Excluír</a>
+                        </div>
+                        {popup == true &&(
+                            <div className={Style.popup}>
+                                {erro == "login attempt failed"&&(
+                                    <div>
+                                        <h4 className={Style.erro}>
+                                            Senha de administrador incorreta
+                                        </h4>
+                                    </div>
+                                )
+                                }
+                                <label htmlFor="senha"> Digite sua senha de admin</label>
+                                <input className={Style.senha} value={senha} type="password" id="senha" onChange={(e) =>{setSenha(e.target.value), setErro(null)}}/>
+                                {erro == "access denied by admin key wrong"&&(
+                                    <div>
+                                        <h4 className={Style.erro}>
+                                            Chave de administração incorreta
+                                        </h4>
+                                    </div>
+                                )
+                                }
+                                <label htmlFor="codigo"> Chave de administração</label>
+                                <input className={Style.codigo} value={chave} type="password" id="codigo" onChange={(e) =>{setChave(e.target.value), setErro(null)}}/>
+                                <a onClick={() => {deletar(), setErro(null), setChave(""), setSenha("")}} > Concluír </a>
+                                <a onClick={() => {setPopup(false), setErro(null), setChave(""), setSenha("")}} > Cancelar </a>
+                                {resposta == "denuncia records deleted" && (
+                                    <Navigate to="/todas_denuncias" />
+                                )
+                                }
+                            </div>
+                            )}
+
                     </div>
                 </div>
             )      

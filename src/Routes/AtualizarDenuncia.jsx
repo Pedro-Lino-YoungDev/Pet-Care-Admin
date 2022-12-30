@@ -1,5 +1,7 @@
 import { useState } from "react"
 import Style from "../Style/AtualizarDenuncia.module.css"
+import Botao from '../Components/Botao'
+import { Navigate } from "react-router-dom"
 
 function AtualizarDenuncia(){
 
@@ -10,12 +12,13 @@ function AtualizarDenuncia(){
         "mensagem" : ""
     })
     const[validador, setValidador] = useState(false);
-    const[erro, setErro] = useState({
-        estado: '',
-        mensagem: 'mensagem não foi completamente preenchida'
-    });
+    const[erro, setErro] = useState();
+    const[resposta, setResposta] = useState();
+    const[falha, setFalha] = useState();
+    const[redirecionar,setRedirecionar] = useState();
 
     const editar = (e) =>{
+        setErro(null)
         if(e.target.id == "mensagem"){
             let valor = e.target.value;
             setDados((prev) =>{
@@ -50,21 +53,26 @@ function AtualizarDenuncia(){
     const progresso = () => {
         let valor = 0;
 
-        if(dados.mensagem.length > 100){
+        if(dados.estado != "concluída" && dados.mensagem.length > 100){
             valor+=50
         }
-        if(dados.estado){
+        if(dados.estado != "concluída" && dados.estado){
             valor+=50
+        }
+        else if(dados.estado == "concluída" && dados.estado){
+            valor +=100
         }
 
         return valor
     }
+    const post = () =>{
+        axios.post("https://backend-petcare.herokuapp.com/admin/denuncia/atualizar",dados)
+        .then((res) => setResposta(res))
+        .catch((res) => setFalha(res.message))
+        .then(() => {console.clear(), setRedirecionar(true)})
+    }
     return (
         <div className={Style.ContainerMinimal}>
-            {
-                console.log(dados)
-            }
-
             <div className={Style.BarraDeProgresso}><div style={{width : progresso()+"%"}}></div></div>
             <form action="post">
                 <p>Deseja adicinar seu nome a essa atualização?</p>
@@ -78,10 +86,30 @@ function AtualizarDenuncia(){
                     <option value="aceita">Em Acompanhamento</option>
                     <option value="concluída">Animal Resgatado</option>
                 </select>
-                
-                <label htmlFor="mensagem">Mensagem de atualização</label>
-                <textarea name="mensagem" placeholder="mínimo de 100 caractéres" id="mensagem" cols="30" rows="10" onChange={editar}></textarea>
-                
+                {dados.estado != "concluída" &&(
+                <>
+                    <label htmlFor="mensagem">Mensagem de atualização</label>
+                    <textarea name="mensagem" placeholder="mínimo de 100 caractéres" id="mensagem" cols="30" rows="10" onChange={editar}></textarea>
+                </>
+                )
+                }
+                {erro == true &&(
+                    <h4 className={Style.erro}>
+                        os campos não foram completamente preenchidos!
+                    </h4>
+                )
+                }
+                {progresso()!=100 &&(
+                    <Botao tipo="interno" nome="Enviar" clique={() => {setErro(true)}}></Botao>
+                )
+                }
+                {redirecionar == true &&(
+                    <Navigate to={"/home"}/>
+                )
+                }
+                {
+
+                }
             </form>
         </div>
     )

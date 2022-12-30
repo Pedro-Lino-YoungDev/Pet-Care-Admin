@@ -114,7 +114,7 @@ function Contato(){
                 }
             }
             const post = () => {
-                axios.post("https://backend-petcare.herokuapp.com/admin/denuncia",quantidade_de_imagens())
+                axios.post("https://backend-petcare.herokuapp.com/denuncia",quantidade_de_imagens())
                 .then((res) => setResposta(res))
                 .catch((res) => setErro(res.message))
                 .then(() => {setRedirecionar(true) , console.clear()})
