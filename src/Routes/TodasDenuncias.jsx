@@ -141,14 +141,11 @@ function TodasDenucias(){
                     </div>
                 )
             }
+            else if (erro == "token has expired"){
+                localStorage.removeItem("token")
+                return <Navigate to="/login" />
+            }
             else if (denuncias != undefined){
-                /* Exemplo de Cronometro;
-                const time = new Date ();
-                time.setSeconds(time.getSeconds()+2);
-                const expiryTimestamp = time;
-                const [expirou, setExpirou] = useState();
-                const {  } = useTimer({expiryTimestamp, onExpire: () => setExpirou(true)});
-                */
                 return(
                     <div>
                         <div className={Style.ContainerMinimal}>
@@ -183,7 +180,7 @@ function TodasDenucias(){
                                     </p>
                                 </div>
                                 <div className={Style.ContainerBtn}>
-                                <Botao tipo="redirecionar" nome="Ver detalhes" estado={{from:denuncias[i]}} rota="/denuncia"></Botao>
+                                    <Botao tipo="redirecionar" nome="Ver detalhes" estado={{from:denuncias[i]}} rota={""+den.id}></Botao>
                                 </div>
                             </div>
                             )}

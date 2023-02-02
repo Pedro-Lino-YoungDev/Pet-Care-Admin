@@ -22,6 +22,7 @@ function Registro(){
         
         const [nome, setNome] = useState();
         const [email, setEmail] = useState();
+        const [org, setOrg] = useState();
         const [chaveADM, setChaveADM] = useState();
         const [senha, setSenha] = useState();
         const [senha_verificada, setSenha_verificada] = useState();
@@ -41,7 +42,9 @@ function Registro(){
         const verificar_senha = (e) => {
             var re = /\S+@\S+\.\S+/;
 
-            if(senha == '' || senha == null  || e == null || e == '' || nome == '' || nome == null || email == null || email == '' || chaveADM == '' || chaveADM == null){
+            if(senha == '' || senha == null  || e == null || e == '' || nome == '' || 
+            nome == null || email == null || email == '' || chaveADM == '' || 
+            chaveADM == null || org ==  null || org == ''){
                 return 1
             }
             else if(re.test(email) == false){
@@ -64,6 +67,7 @@ function Registro(){
                 return{
                     "name": nome,
                     "email": email,
+                    "org": org,
                     "password": senha_verificada,
                     "photo": foto,
                     "adminKey": chaveADM
@@ -74,6 +78,7 @@ function Registro(){
                 return{
                     "name": nome,
                     "email": email,
+                    "org": org,
                     "adminKey": chaveADM,
                     "password": senha_verificada,
                     "photo": novaFoto
@@ -105,156 +110,158 @@ function Registro(){
 
         return(
             <div className={Style.ContainerMinimal}>
-                {
-                    console.log(alterar_dados())
+                <form action="Registro" method="Post" className={Style.form}>
+                                <h4 className={Style.h4}>
+                                    Deseja adicianar uma imagem para o seu perfil?
+                                </h4>
+                            <div className={Style.CheckBox}>
+                                <input id="checkbox-1" type="checkbox" checked={validador} onChange={() => {validar() ,setFoto(null) , setChave("2")}}/>
+                                <label htmlFor="checkbox-1"></label>
+                            </div>
+                            {validador == true &&                           
+                            <div className={Style.ItemForm1}>
+                            {foto != undefined &&(
+                                <img className={Style.Imagem} src={foto} alt="" />
+                            )
+                            }
+                            {foto == undefined &&(
+                                <img className={Style.Imagem} src={null} alt="" />
+                            )
+                            }
+                            <label className={Style.FileLabel} htmlFor="PrimeiraImg"> {texto} </label>
+                            { foto != null &&(
+                            <a className={Style.Logout} onClick={() => {setFoto(undefined) , setTexto("Adicionar Imagem") , setChave("2")}}>X</a>
+                            )
+                            }
+                            <input className={Style.InputFile} key={chave} type="file" accept="image/*" name="image" id="PrimeiraImg" onChange ={(e) => {converter_imagem(e.target.files) , setTexto("") , setChave("1")}}/>
+                        </div>}
+                    <div className={Style.ContainerItem}>
+                    <label htmlFor="E-mail">Email:</label>
+                        <br />
+                        <input className={Style.Input} type="email" id="E-mail" onChange={(e) =>{setEmail(e.target.value) , setErro_imput(false), setErro_email(false) , setCarregamento(false) , setError(null)}}/>
+                    </div>
+                    <div className={Style.ContainerItem}>
+                        <label htmlFor="Name">Nome do usuário:</label>
+                        <br />
+                        <input className={Style.Input} type="Name" id='Name' onChange={(e) =>{setNome(e.target.value) , setErro_imput(false) , setCarregamento(false) , setError(null)}}/>
+                    </div>
+                    <div className={Style.ContainerItem}>
+                        <label htmlFor="Org">Org:</label>
+                        <br />
+                        <input className={Style.Input} type="Name" id='Org' onChange={(e) =>{setOrg(e.target.value) , setErro_imput(false) , setCarregamento(false) , setError(null)}}/>
+                    </div>
+                    <div className={Style.ContainerItem}>
+                        <label htmlFor="chave">Chave de administração:</label>
+                        <br />
+                        <input className={Style.Input} type="password" id='chave' onChange={(e) =>{setChaveADM(e.target.value) , setErro_imput(false) , setCarregamento(false) , setError(null)}}/>
+                    </div>
+                    <div className={Style.ContainerItem}>
+                        <label htmlFor="Password">Senha:</label>
+                        <br />
+                        <input className={Style.Input} type="Password" id='Password' onChange={(e) =>{setSenha(e.target.value) , setErro_imput(false), setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
+                    </div>
+                    <div className={Style.ContainerItem}>
+                        <label htmlFor="PasswordConfirm">Confirmar senha:</label>
+                        <input className={Style.Input} type="Password" id='PasswordConfirm' onChange={(e) =>{setSenha_verificada(e.target.value) , setErro_imput(false), setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
+                    </div>
+                </form>
+                <div className={Style.Container}>
+                    <h4>
+                        Já possui conta?
+                        <Link tipo="interno" nome="Entrar" url="/Login"/>
+                    </h4>
+                </div>
+                {resposta == null && error == null && carregamento == true &&(
+                    <div>
+                        <div className={Style.Carregamento}></div>
+                    </div>
+                )
                 }
-                    <form action="Registro" method="Post" className={Style.form}>
-                                    <h4 className={Style.h4}>
-                                        Deseja adicianar uma imagem para o seu perfil?
-                                    </h4>
-                                <div className={Style.CheckBox}>
-                                    <input id="checkbox-1" type="checkbox" checked={validador} onChange={() => {validar() ,setFoto(null) , setChave("2")}}/>
-                                    <label htmlFor="checkbox-1"></label>
-                                </div>
-                                {validador == true &&                           
-                                <div className={Style.ItemForm1}>
-                                {foto != undefined &&(
-                                    <img className={Style.Imagem} src={foto} alt="" />
-                                )
-                                }
-                                {foto == undefined &&(
-                                    <img className={Style.Imagem} src={null} alt="" />
-                                )
-                                }
-                                <label className={Style.FileLabel} htmlFor="PrimeiraImg"> {texto} </label>
-                                { foto != null &&(
-                                <a className={Style.Logout} onClick={() => {setFoto(undefined) , setTexto("Adicionar Imagem") , setChave("2")}}>X</a>
-                                )
-                                }
-                                <input className={Style.InputFile} key={chave} type="file" accept="image/*" name="image" id="PrimeiraImg" onChange ={(e) => {converter_imagem(e.target.files) , setTexto("") , setChave("1")}}/>
-                            </div>}
-                        <div className={Style.ContainerItem}>
-                        <label htmlFor="Email">Email:</label>
-                            <br />
-                            <input className={Style.Input} type="email" onChange={(e) =>{setEmail(e.target.value) , setErro_imput(false), setErro_email(false) , setCarregamento(false) , setError(null)}}/>
-                        </div>
-                        <div className={Style.ContainerItem}>
-                            <label htmlFor="Name">Nome do usuário:</label>
-                            <br />
-                            <input className={Style.Input} type="Name" onChange={(e) =>{setNome(e.target.value) , setErro_imput(false) , setCarregamento(false) , setError(null)}}/>
-                        </div>
-                        <div className={Style.ContainerItem}>
-                            <label htmlFor="chave">Chave de administração:</label>
-                            <br />
-                            <input className={Style.Input} type="password" onChange={(e) =>{setChaveADM(e.target.value) , setErro_imput(false) , setCarregamento(false) , setError(null)}}/>
-                        </div>
-                        <div className={Style.ContainerItem}>
-                            <label htmlFor="Password">Senha:</label>
-                            <br />
-                            <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value) , setErro_imput(false), setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
-                        </div>
-                        <div className={Style.ContainerItem}>
-                            <label htmlFor="PasswordConfirm">Confirmar senha:</label>
-                            <input className={Style.Input} type="Password" onChange={(e) =>{setSenha_verificada(e.target.value) , setErro_imput(false), setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
-                        </div>
-                    </form>
-                    <div className={Style.Container}>
-                        <h4>
-                            Já possui conta?
-                            <Link tipo="interno" nome="Entrar" url="/Login"/>
+                {verificar_senha(senha_verificada) == 1 && erro_imput == true &&(
+                    <div>
+                        <h4 className={Style.error}>
+                            Oops! Preencha todos os campos para se cadastrar com sucesso.
                         </h4>
                     </div>
-                    {resposta == null && error == null && carregamento == true &&(
-                        <div>
-                            <div className={Style.Carregamento}></div>
-                        </div>
-                    )
-                    }
-                    {verificar_senha(senha_verificada) == 1 && erro_imput == true &&(
-                        <div>
-                            <h4 className={Style.error}>
-                                Oops! Preencha todos os campos para se cadastrar com sucesso.
-                            </h4>
-                        </div>
-                    )
-                    }
-                    {verificar_senha(senha_verificada) == 2 && erro_senha == true &&(
-                        <div>
-                            <h4 className={Style.error}>
-                                Oops! as 2 senhas estão diferentes*
-                            </h4>
-                        </div>
-                    )
-                    }
-                    {verificar_senha(senha_verificada) == 4 && erro_email == true &&(
-                        <div>
-                            <h4 className={Style.error}>
-                                Oops! seu email não é válido*
-                            </h4>
-                        </div>
-                    )
-                    }
-                    {verificar_senha(senha_verificada) == 5 && erro_senha == true &&(
-                        <div>
-                            <h4 className={Style.error}>
-                                Oops! Sua senha está muito fraca digite uma senha maior que 8 caractéres e sem sequência númerica*
-                            </h4>
-                        </div>
-                    )
-                    }
-                    {error == "user already exists" &&(
-                        <div>
-                            <h4 className={Style.error}>
-                                Oops! esse Email já possui uma conta vinculada.
-                            </h4>
-                        </div>
-                    )
-                    }
-                    {error == "access denied by admin key wrong" &&(
-                        <div>
-                            <h4 className={Style.error}>
-                                Oops! chave de administração inválida.
-                            </h4>
-                        </div>
-                    )
-                    }
-                    {verificar_senha(senha_verificada) == 1 &&(
-                        <div className={Style.DivBotao}>
-                            <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_imput(true)}}></Botao>
-                        </div>
-                    )
-                    }
+                )
+                }
+                {verificar_senha(senha_verificada) == 2 && erro_senha == true &&(
+                    <div>
+                        <h4 className={Style.error}>
+                            Oops! as 2 senhas estão diferentes*
+                        </h4>
+                    </div>
+                )
+                }
+                {verificar_senha(senha_verificada) == 4 && erro_email == true &&(
+                    <div>
+                        <h4 className={Style.error}>
+                            Oops! seu email não é válido*
+                        </h4>
+                    </div>
+                )
+                }
+                {verificar_senha(senha_verificada) == 5 && erro_senha == true &&(
+                    <div>
+                        <h4 className={Style.error}>
+                            Oops! Sua senha está muito fraca digite uma senha maior que 8 caractéres e sem sequência númerica*
+                        </h4>
+                    </div>
+                )
+                }
+                {error == "user already exists" &&(
+                    <div>
+                        <h4 className={Style.error}>
+                            Oops! esse Email já possui uma conta vinculada.
+                        </h4>
+                    </div>
+                )
+                }
+                {error == "access denied by admin key wrong" &&(
+                    <div>
+                        <h4 className={Style.error}>
+                            Oops! chave de administração inválida.
+                        </h4>
+                    </div>
+                )
+                }
+                {verificar_senha(senha_verificada) == 1 &&(
+                    <div className={Style.DivBotao}>
+                        <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_imput(true)}}></Botao>
+                    </div>
+                )
+                }
 
-                    {verificar_senha(senha_verificada) == 5 &&(
-                        <div className={Style.DivBotao}>
-                            <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_senha(true)}}></Botao>
-                        </div>
-                    )
-                    } 
-                    {verificar_senha(senha_verificada) == 2 &&(
-                        <div className={Style.DivBotao}>
-                            <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_senha(true)}}></Botao>
-                        </div>
-                    )
-                    } 
-                    {verificar_senha(senha_verificada) == 3 && carregamento != true &&(
-                        <div className={Style.DivBotao}>
-                            <Botao tipo="interno" nome="Cadastrar" clique={() => {post(), setCarregamento(true)}}></Botao>
-                        </div>
-                    )
-                    }
-                    {verificar_senha(senha_verificada) == 4 &&(
-                        <div className={Style.DivBotao}>
-                            <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_email(true)}}></Botao>
-                        </div>
-                    )
-                    } 
-                    {
-                    }
-                    {resposta == "admin record created" &&(
-                        <Navigate to="/login"/>
-                    )
-                    }
+                {verificar_senha(senha_verificada) == 5 &&(
+                    <div className={Style.DivBotao}>
+                        <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_senha(true)}}></Botao>
+                    </div>
+                )
+                } 
+                {verificar_senha(senha_verificada) == 2 &&(
+                    <div className={Style.DivBotao}>
+                        <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_senha(true)}}></Botao>
+                    </div>
+                )
+                } 
+                {verificar_senha(senha_verificada) == 3 && carregamento != true &&(
+                    <div className={Style.DivBotao}>
+                        <Botao tipo="interno" nome="Cadastrar" clique={() => {post(), setCarregamento(true)}}></Botao>
+                    </div>
+                )
+                }
+                {verificar_senha(senha_verificada) == 4 &&(
+                    <div className={Style.DivBotao}>
+                        <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_email(true)}}></Botao>
+                    </div>
+                )
+                } 
+                {
+                }
+                {resposta == "admin record created" &&(
+                    <Navigate to="/login"/>
+                )
+                }
             </div>
         )
     }

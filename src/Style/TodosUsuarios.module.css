@@ -152,7 +152,7 @@
     justify-content: center;
     align-items: center;
     background-color: #CED4DA;
-    border-radius: 50%;
+    border-radius: 20px;
     margin-top: 60px;
     margin-bottom: 60px;
   }
@@ -186,6 +186,7 @@
     width: 0px;
     height: 80%;
     width: auto;
+    border-radius: 20px;
     }
     .espaço{
       height: 10px;

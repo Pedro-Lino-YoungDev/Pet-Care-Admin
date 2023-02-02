@@ -3,48 +3,71 @@ import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom
 import BarraDeNavegação from './Components/Navbar'
 import Rodapé from'./Components/Footer'
 import Home from './Routes/Home';
-import Cadastro from './Routes/Cadastro';
-import Listagem from './Routes/Listagem';
+import DenunciasDoUsuario from './Routes/DenunciasDoUsuario';
 import Registro from './Routes/Registro';
 import Login from './Routes/Login';
-import ModificarCadastro from './Routes/ModificarCadastro'
+import ModificarDenuncia from './Routes/ModificarDenuncia'
 import Denuncia from './Routes/Denuncia';
-import User from './Routes/User';
-import Modificarcadastrodousuario from './Routes/ModificarCadastroDoUsuario';
+import Perfil from './Routes/Perfil';
+import AtualizarPerfil from './Routes/AtualizarPerfil';
 import Sobre from "./Routes/Sobre"
 import Contato from "./Routes/Contato"
 import Politicas from "./Routes/Politicas"
 import TodosUsuarios from './Routes/TodosUsuarios';
 import TodasDenuncias from "./Routes/TodasDenuncias"
 import TodosOsAdmins from "./Routes/TodosOsAdmins"
-import AtualizarDenuncia from './Routes/AtualizarDenuncia';
+import AtualizarEstado from './Routes/AtualizarEstado';
 import ModificarUsuario from './Routes/ModificarUsuario';
+import EstadoDenuncia from './Routes/EstadoDenuncia';
 
 function App() {
-  
+
   return (
     <Router >
     <BarraDeNavegação/>
     <Routes >
-        <Route path="/home" element={<Home />} />
-        <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/denuncias_usuario" element={<Listagem />} />
-        <Route path="/registro" element={<Registro />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/modificar_denuncia" element={<ModificarCadastro />} />
-        <Route path='/denuncia' element={<Denuncia />} />
-        <Route path="/usuario" element={<User/>}/>
-        <Route path="/modificar_perfil" element={< Modificarcadastrodousuario />}/>
-        <Route path="/sobre" element={<Sobre/>}/>
-        <Route path="/politicas_da_empresa" element={<Politicas/>}/>
-        <Route path="/Contato" element={<Contato/>}/>
-        <Route path="/todos_usuarios" element={<TodosUsuarios/>}/>
-        <Route path="/todos_admins" element={<TodosOsAdmins/>}/>
-        <Route path="/todas_denuncias" element={<TodasDenuncias/>}/>
-        <Route path="/atualizar_denuncia" element={<AtualizarDenuncia/>}/>
-        <Route path="/modificar_usuario" element={<ModificarUsuario/>}/>
 
-        <Route exact path="/" element={ <Navigate to="/home"/> }/>
+        {/*Páginas de denúncia*/}
+        
+          {/*Páginas de denúncia gerais*/}
+          <Route path="/denuncias" element={<TodasDenuncias/>}/>
+          <Route path='/denuncias/:id' element={<Denuncia />} />
+          <Route path="/denuncias/:id/modificar" element={<ModificarDenuncia/>} />
+          <Route path="/denuncias/:id/estado" element={<EstadoDenuncia/>} />
+          <Route path="/denuncias/:id/estado/atualizar" element={<AtualizarEstado/>}/>
+
+          {/*Páginas de denúncia referentes ao usuário*/}
+          <Route path="/usuarios/:id/denuncias" element={<DenunciasDoUsuario />} />
+          <Route path='/usuarios/:id/denuncias/:id' element={<Denuncia />} />
+          <Route path="/usuarios/:id/denuncias/:id/modificar" element={<ModificarDenuncia/>} />
+          <Route path="/usuarios/:id/denuncias/:id/estado" element={<EstadoDenuncia/>} />
+          <Route path="/usuarios/:id/denuncias/:id/estado/atualizar" element={<AtualizarEstado/>}/>
+
+        {/*Páginas básicas*/}
+          <Route path="/home" element={<Home />} />
+          <Route path="/sobre" element={<Sobre/>}/>
+          <Route path="/Contato" element={<Contato/>}/>
+          <Route path="/politicas" element={<Politicas/>}/>
+
+        {/*Páginas de autenticação*/}
+          <Route path="/registro" element={<Registro />} />
+          <Route path="/login" element={<Login />} />
+
+        {/*Páginas de perfil do administrador*/}
+          <Route path="/perfil" element={<Perfil/>}/>
+          <Route path="/perfil/atualizar" element={<AtualizarPerfil />}/>
+
+        {/*Páginas de usuarios*/}
+          <Route path="/usuarios" element={<TodosUsuarios/>}/>
+          <Route path="/usuarios/:id/modificar" element={<ModificarUsuario/>}/>
+
+        {/*Página de ver outros administradores*/}
+          <Route path="/admins" element={<TodosOsAdmins/>}/>
+
+        {/*Redirecionamento de / para home*/}
+          <Route exact path="/" element={ <Navigate to="/home"/> }/>
+
+
     </Routes>
     <Rodapé />
     </Router>

@@ -4,7 +4,7 @@ import {useState} from 'react'
 import axios from 'axios';
 import jwtDecode from 'jwt-decode'
 
-function ModificarCadastro(){
+function ModificarDenuncia(){
 
     if (localStorage.getItem("token") != null) {
 
@@ -191,7 +191,7 @@ function ModificarCadastro(){
                                 Cancelar
                             </a>
                         {cancelar == true &&(
-                            <Navigate to="/listagem"/>
+                            <Navigate to="/denuncias"/>
                         )
                         }
                         {redirecionar == true &&(
@@ -211,4 +211,4 @@ function ModificarCadastro(){
     }
 }
 
-export default ModificarCadastro
+export default ModificarDenuncia

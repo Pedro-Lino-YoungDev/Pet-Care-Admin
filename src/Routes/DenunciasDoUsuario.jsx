@@ -6,7 +6,7 @@ import jwtDecode from 'jwt-decode';
 import Botao from '../Components/Botao';
 
 
-function Listagem(){
+function DenunciasDoUsuario(){
 
     if (localStorage.getItem("token") != null) {
 
@@ -98,7 +98,7 @@ function Listagem(){
                                 return ""+28+"/"+mes+"/"+DataFormatada[0]
                             }
                             else if (parseInt(DataFormatada[1]) == 2 || parseInt(DataFormatada[1]) == 4 || parseInt(DataFormatada[1]) == 6 || parseInt(DataFormatada[1]) == 8 || parseInt(DataFormatada[1]) == 9 || parseInt(DataFormatada[1]) == 11) {
-                                return ""+31+"/"+mes+"/"+DataFormatada[0]
+                                return ""+31+"/"+mes+"/denuncias/"+DataFormatada[0]
                             }
                             else{
                                 return ""+30+"/"+mes+"/"+DataFormatada[0]
@@ -186,7 +186,7 @@ function Listagem(){
                                     </p>
                                 </div>
                                 <div className={Style.ContainerBtn}>
-                                <Botao tipo="redirecionar" nome="Ver detalhes" estado={{from:denuncias[i]}} rota="/denuncia"></Botao>
+                                <Botao tipo="redirecionar" nome="Ver detalhes" estado={{from:denuncias[i]}} rota={""+den.id}></Botao>
                                 </div>
                             </div>
                             )}
@@ -204,4 +204,4 @@ function Listagem(){
     }
 }
 
-export default Listagem
+export default DenunciasDoUsuario

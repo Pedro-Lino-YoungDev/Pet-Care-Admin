@@ -5,7 +5,7 @@ import { useEffect , useState } from 'react'
 import axios from 'axios'
 import Botao from '../Components/Botao'
 
-function users () { 
+function Perfil () { 
 
     if (localStorage.getItem("token") != null) {
 
@@ -27,7 +27,7 @@ function users () {
 
             useEffect(() => {
                 axios.post("https://backend-petcare.herokuapp.com/admin/"+TokenDecodificado.id,token)
-                .then((res) => setUsuario(res.data.user))
+                .then((res) => setUsuario(res.data.admin))
                 .catch((res) => setErro(res))
                 .finally(() => setAnimacao(false))
             },[]);
@@ -39,10 +39,10 @@ function users () {
                     </div>
                 )
             }
-            return( 
-                <div >
-                    {usuario != null &&( 
-                        
+            return(
+                
+                <div>
+                    {usuario != null &&(
                         <div className={Style.ContainerMinimal}>
                             <div className={Style.Container}>
                             <div className={Style.ContainerIMG}>
@@ -56,6 +56,12 @@ function users () {
                                     {usuario.name}
                                 </p>
                                 <h4>
+                                    Organização:
+                                </h4>
+                                <p>
+                                    {usuario.org}
+                                </p>
+                                <h4>
                                     E-mail do Usuario:
                                 </h4>
                                 <p>
@@ -63,7 +69,7 @@ function users () {
                                 </p>
                             </div>
                             </div>
-                            <Botao tipo="redirecionar" nome="Modificar Cadastro" estado={{from:usuario}} rota="/modificarcadastrodousuario"></Botao>
+                            <Botao tipo="redirecionar" nome="Modificar Cadastro" rota="atualizar"></Botao>
                             <a href="/home" onClick={ () => {localStorage.removeItem("token"), localStorage.removeItem("foto")}} className={Style.Logout}>
                                 Sair
                             </a>
@@ -83,4 +89,4 @@ function users () {
     }
 }
 
-export default users;
+export default Perfil;

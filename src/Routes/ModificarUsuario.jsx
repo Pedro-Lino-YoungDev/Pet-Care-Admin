@@ -218,9 +218,6 @@ function ModificarUsuario() {
                         </h4>
                     )
                     }
-                    {
-                        console.log(validar_opcoes())
-                    }
                     {validar_opcoes() == "nome não foi preenchido" &&(
                         <div className={Style.DivBtn}>
                             <a className={Style.Btn} onClick={() => setErroGeral(validar_opcoes())}>Enviar</a>
@@ -259,12 +256,12 @@ function ModificarUsuario() {
                         </a>
                     </div>
                     {cancelar == true &&(
-                        <Navigate to="/todos_usuarios"/>
+                        <Navigate to="/usuarios"/>
                     )
                     }
 
                     {resposta == "user records updated successfully by admin"&&(
-                        <Navigate to="/todos_usuarios"/>
+                        <Navigate to="/usuarios"/>
                     )
                     }
                     {erro == "token has expired" &&(

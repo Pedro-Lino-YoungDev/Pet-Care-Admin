@@ -9,7 +9,7 @@ function footer(){
           <Link tipo="navegação" nome ="Sobre" url="/sobre"/>
         </div>
         <div  className={Style.FooterItem2}>
-          <Link tipo="navegação" nome ="Políticas" url="politicas_da_empresa"/>
+          <Link tipo="navegação" nome ="Políticas" url="/politicas"/>
         </div>
         <div className={Style.FooterItem3}>
           <Link tipo="navegação" nome ="Contato" url="/contato"/>

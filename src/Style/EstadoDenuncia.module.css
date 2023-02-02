@@ -1,143 +1,54 @@
-.popup{
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  height: 300px;
-  width: 300px;
-  top: calc(50% - 152px);
-  left: calc(50% - 152px);
-  background-image: linear-gradient(#CED4DA,#929da7);
-  background-color: #CED4DA;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  border: solid white 2px;
-}
-.popup label {
-  display: flex;
-  margin-top: auto;
-  text-align: left;
-}
-.popup input{
-  border: 1px;
-}
-.erro{
-  text-align: center;
-  color:red;
-}
-.popup input+a{
-  color: #CED4DA;
-  background-color: rgb(196, 29, 29) ;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-decoration: none;
-  border-radius: 10px;
-  border-color:  #CED4DA;
-  border-style: solid;
-  border-width: 2px;
-  align-self: center;
-  margin-top: auto;
-  cursor: pointer;
-}
-.popup a+a{
-  color: #CED4DA;
-  background-color: #353535;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-decoration: none;
-  border-radius: 10px;
-  border-color:  #CED4DA;
-  border-style: solid;
-  border-width: 2px;
-  align-self: center;
-  margin-top: auto;
-  margin-bottom: auto;
-  cursor: pointer;
-}
-:hover.popup a{
-  color: #ffff;
-  border-color: #ffff;
-}
-.senha{
-  width: 210px;
-  padding-left: 10px;
-  padding-right: 10px;
-  height: 25px;
-  border-radius: 10px;
-}
-.codigo{
-  width: 150px;
-  height: 25px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 10px;
-}
-
 .ContainerMinimal {
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
     margin-top: 90px;
-    width: 86%;
-    margin-left: 7%;
-    margin-right: 7%;
     background-color: #CED4DA;
     text-align: center;
     border-radius: 10px;
-    padding-bottom: 40px;
-  }
-  .ContainerBtn{
-    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 86%;
+    margin-left: 7%;
+    margin-right: 7%;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: auto;
-    margin-top: 20px;
   }
-  .Banner{
-    max-width: 80%;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    max-height: 300px;
+  .Estado{
+    display: block;
+  }
+  .box{
+    display: flex;
+    margin-top: 30px;
+  }
+  .box h3{
+    margin: 0px;
+    align-self: center;
+  }
+  .box h4{
+    margin: 0px;
+    font-weight:normal;
+    justify-self: center;
+    align-self: center;
+  }
+  .buton{
+    display: flex;
+    margin-top: auto;
   }
   .DivText{
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left:5%;
-    margin-right: 5%;
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
   }
-  .paragrafo{
-    width: 0px;
-    width: auto;
+  .DivText p {
+    width: 80%;
+    text-align:justify;
+    margin: 0;
   }
-  .Btn{
-    color: #CED4DA;
-    background-color: rgb(196, 29, 29);
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-decoration: none;
-    border-radius: 10px;
-    border-color:  #CED4DA;
-    border-style: solid;
-    border-width: 2px;
-    align-self: center;
-    width: 66.95px;
-}
-:hover.Btn{
-    color: #ffff;
-    border-color: #ffff;
-}
+
 
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {
-  
         min-height: 280px;
       }
   }

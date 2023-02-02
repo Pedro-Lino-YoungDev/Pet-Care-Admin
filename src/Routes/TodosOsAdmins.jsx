@@ -48,12 +48,10 @@ function TodosOsAdmins(){
                     <div className={Style.ContainerMinimal}>       
                         {admins.map((adm,i)=> 
                         <div className={Style.ContainerBlock} key ={adm.email}>
-                            <p className={Style.espaço}></p>
                             <h1 className={Style.ContainerBlockH1}>
                                 <img className={Style.ContainerBlockImg} src={adm.photo} alt=""/>
                             </h1>
                             <div className={Style.ContainerBlockH2}>
-                                <p className={Style.espaço}></p>
                                 <h4 className={Style.ContainerBlockH4}>
                                     Nome:
                                 </h4>
@@ -63,25 +61,27 @@ function TodosOsAdmins(){
                                 </p>
                                 <p className={Style.espaço}></p>
                                 <h4 className={Style.ContainerBlockH4}>
+                                    Org:
+                                </h4>
+                                <p className={Style.espaço}></p>
+                                <p className={Style.ContainerBlockP}>
+                                    {adm.org}
+                                </p>
+                                <p className={Style.espaço}></p>
+                                <h4 className={Style.ContainerBlockH4}>
                                     Email:
                                 </h4>
                                 <p className={Style.espaço}></p>
                                 <p className={Style.ContainerBlockP}>
                                     <a href={"mailto:"+adm.email}>{adm.email}</a>
                                 </p>
+                                <p className={Style.espaço}></p>
+                                <p className={Style.espaço}></p>
                                 {adm.email == TokenDecodificado.email &&(
                                     <>
-                                        <p className={Style.espaço}></p>
-                                        <p className={Style.espaço}></p>
-                                        <p className={Style.espaço}></p>
-                                        <p className={Style.espaço}></p>
                                         <p className={Style.ContainerBlockPAlt}>
-                                                <Botao tipo="redirecionar" nome="Modificar" estado={{from:adm}} rota="/modificar_perfil"></Botao>
+                                                <Botao tipo="redirecionar" nome="Modificar" estado={{from:adm}} rota="/perfil/atualizar"></Botao>
                                         </p>
-                                        <p className={Style.espaço}></p>
-                                        <p className={Style.espaço}></p>                                        <p className={Style.espaço}></p>
-                                        <p className={Style.espaço}></p>
-                                        <p className={Style.espaço}></p>
                                     </>
                                 )
                                 }

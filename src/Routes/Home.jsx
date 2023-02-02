@@ -59,25 +59,25 @@ function Home(){
             </div>
             { navegar == "Todos os admins" &&(
                 <>
-                <Navigate to={"/todos_admins"}/>
+                <Navigate to={"/admins"}/>
                 </>
             )
             }
             { navegar == "Todos usuários" &&(
                 <>
-                <Navigate to={"/todos_usuarios"}/>
+                <Navigate to={"/usuarios"}/>
                 </>
             )
             }
             { navegar == "Todas Denúncias" &&(
                 <>
-                <Navigate to={"/todas_denuncias"}/>
+                <Navigate to={"/denuncias"}/>
                 </>
             )
             }
             { navegar == "Minhas Denúncias" &&(
                 <>
-                    <Navigate to={""}/>
+                    <Navigate to={"/"}/>
                 </>
             )
             }

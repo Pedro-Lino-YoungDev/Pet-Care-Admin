@@ -107,8 +107,8 @@ function TodosUsuarios(){
                                 <p className={Style.espaço}></p>
                                 <p className={Style.espaço}></p>
                                 <p className={Style.ContainerBlockPAlt}>
-                                        <Botao tipo="redirecionar" nome="Modificar" estado={{from:usr}} rota="/modificar_usuario"></Botao>
-                                        <Link className={Style.Botão} state={{from:usr}} to ={"/denuncias_usuario"}>Denúncias</Link> 
+                                        <Botao tipo="redirecionar" nome="Modificar" estado={{from:usr}} rota={""+usr.id+"/modificar"}></Botao>
+                                        <Link className={Style.Botão} state={{from:usr}} to ={""+usr.id+"/denuncias"}>Denúncias</Link> 
                                 </p>
                                 <p className={Style.espaço}></p>
 
@@ -117,9 +117,6 @@ function TodosUsuarios(){
                         
                         
                         )}
-                        {
-                            console.log(resposta)
-                        }
                         {popup == true &&(
                             <div className={Style.popup}>
                                 {erro == "login attempt failed"&&(
