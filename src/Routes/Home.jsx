@@ -50,10 +50,10 @@ function Home(){
                         Todas denúncias
                     </p>
                 </div>
-                <div className={Style.Opção} onClick={() => {setNavegar("Minhas Denúncias")}}>
+                <div className={Style.Opção} onClick={() => {setNavegar("Meu perfil")}}>
                     <p>
                         <img src="/Imagens/MinhasDenuncias.png" alt="" />
-                        Minhas Denúncias
+                        Perfil&ensp;
                     </p>
                 </div>
             </div>
@@ -75,9 +75,9 @@ function Home(){
                 </>
             )
             }
-            { navegar == "Minhas Denúncias" &&(
+            { navegar == "Meu perfil" &&(
                 <>
-                    <Navigate to={"/"}/>
+                    <Navigate to={"/perfil"}/>
                 </>
             )
             }
