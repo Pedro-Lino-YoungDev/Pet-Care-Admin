@@ -42,6 +42,7 @@
   padding: 0px;
   text-align: left;
   color: #353535;
+  width: auto;
 }
 .ContainerVerde{
   width:calc(100% - 30px);
@@ -74,6 +75,7 @@
   padding: 0px;
   text-align: left;
   color: white;
+  width: auto;
 }
 .Bold {
   font-weight: bold;

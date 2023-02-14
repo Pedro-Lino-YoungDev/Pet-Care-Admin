@@ -79,6 +79,7 @@
     font-size:medium;
     margin: 0px;
     text-align: justify;
+    width: auto;
   } 
   .ContainerBlockPR{
     display: inline-block;
@@ -86,6 +87,7 @@
     font-size:medium;
     text-align: justify;
     margin: 0px;
+    width: auto;
   }
 
   .ContainerBlockImgL{
