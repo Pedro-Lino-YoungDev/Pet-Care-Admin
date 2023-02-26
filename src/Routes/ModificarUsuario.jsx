@@ -126,32 +126,6 @@ function ModificarUsuario() {
                         }
                     }
             }
-            /*
-            const set_nome = (value) => {
-                if (value == null || value == "") {
-                    setNome(null);
-                }
-                else{
-                    setNome(value);
-                }
-            }
-            const set_senha = (value) =>{
-                if (value == null || value == "") {
-                    setSenha(null);
-                }
-                else{
-                    setSenha(value);
-                }        
-            }
-            const set_nova_senha = (value) =>{
-                if (value == null || value == "") {
-                    setNovaSenha(null);
-                }
-                else{
-                    setNovaSenha(value);
-                }        
-            }
-            */
             const put = () => {
                 axios.put('https://backend-petcare.herokuapp.com/usuario/'+from.id,dados_post())
                 .then((res) => setResposta(res.data.message))
@@ -203,9 +177,9 @@ function ModificarUsuario() {
 
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="senha">Senha de Administrador:</label>
-                            <input className={Style.Input} value={senha} type="Password" id= "senha" onChange={(e) => {setSenha(e.target.value), setErroGeral(null)}}/>
+                            <input className={Style.Input} value={senha} type="Password" id= "senha" onChange={(e) => {setSenha(e.target.value), setErroGeral(null), setErro(null)}}/>
                         </div>
-                        {erro == "admin password wrong" &&(
+                        {erro == "login admin attempt failed" &&(
                             <h4 className={Style.erro}>                
                                 Oops! a sua senha está incorreta     
                             </h4>

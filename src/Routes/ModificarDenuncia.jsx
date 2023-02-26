@@ -195,7 +195,7 @@ function ModificarDenuncia(){
                         )
                         }
                         {redirecionar == true &&(
-                            <Navigate to="/home"/>
+                            <Navigate to="/denuncias"/>
                         )
                         }
                     </div>

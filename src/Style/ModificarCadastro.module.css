@@ -42,6 +42,8 @@
   .Label{
     text-align: left;
     padding-left: 3%;
+    align-self: center;
+    text-align: center;
   }
   .Input{
     margin-top: 5px;
@@ -51,6 +53,7 @@
     border-radius: 7px;
     padding: 0%;
     background-color: #F8F9FA;
+    text-align: left;
 
   }
   .Descricao{

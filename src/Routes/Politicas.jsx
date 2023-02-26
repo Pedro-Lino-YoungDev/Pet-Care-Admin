@@ -37,10 +37,10 @@ function Politicas() {
                         O usuário não poderá excluir as denúncias cadastradas.
                     </li>
                     <li>
-                        Caso o animal que você cadastrou já tenha sido cadastrado por outra pessoa, a sua denúncia será excluida.
+                        Caso o animal que você cadastrou já tenha sido cadastrado por outra pessoa, a sua denúncia será excluída.
                     </li>
                     <li>
-                        se ouver incongruência na sua denúncia a mesma será excluida.
+                        se ouver incongruência na sua denúncia a mesma será excluída.
                     </li>
                 </ul>
             </div>

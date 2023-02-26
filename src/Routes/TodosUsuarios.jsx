@@ -46,7 +46,7 @@ function TodosUsuarios(){
                     }
             })
                 .then((res) => setResposta(res))
-                .catch((res) => setErro(res))
+                .catch((res) => setErro(res.response.data.message))
             }
             while (animacao == true) {
                 return (
@@ -119,7 +119,7 @@ function TodosUsuarios(){
                         )}
                         {popup == true &&(
                             <div className={Style.popup}>
-                                {erro == "login attempt failed"&&(
+                                {erro == "login admin attempt failed"&&(
                                     <div>
                                         <h4 className={Style.erro}>
                                             senha de administrador incorreta
@@ -132,21 +132,18 @@ function TodosUsuarios(){
                                 {erro == "access denied by admin key wrong"&&(
                                     <div>
                                         <h4 className={Style.erro}>
-                                            informações incorretas!
+                                            chave de administração incorreta
                                         </h4>
                                     </div>
                                 )
                                 }
                                 <label htmlFor="codigo"> chave de administração</label>
                                 <input className={Style.codigo} value={chave} type="password" id="codigo" onChange={(e) =>{setChave(e.target.value), setErro(null)}}/>
-                                <a onClick={() => {deletar(id), setErro(null), setChave(""), setSenha("")}} > Concluír </a>
+                                <a onClick={() => {deletar(id), setErro(null)}} > Concluír </a>
                                 <a onClick={() => {setPopup(false), setErro(null), setChave(""), setSenha("")}} > Cancelar </a>
-                                {resposta != null && 
-                                    axios.post("https://backend-petcare.herokuapp.com/usuarios",token)
-                                    .then((res) => setAdmins(res.data[0]))
-                                    .catch((res) => setErro(res.response.data.message))
-                                    .finally(() => setAnimacao(false))
-                                }
+                                {resposta != null && resposta.data.message =="user records deleted by admin" &&(
+                                    setPopup(false)
+                                )}
                             </div>
                         )}
                     </div>
